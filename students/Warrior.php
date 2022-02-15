@@ -2,8 +2,9 @@
 
 require_once __DIR__ . "/../base/LocalWarrior.php";
 
-$GLOBALS['warriorID'] = 'azertyuiop';
+$GLOBALS['warriorName'] = 'azerty';
 
-abstract class Warrior extends LocalWarrior {
+abstract class Warrior extends LocalWarrior
+{
 
 }

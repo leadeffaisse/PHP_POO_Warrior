@@ -21,19 +21,19 @@ $blade = new Blade($views, $cache);
 $results = checkAnswers();
 
 $errors = array();
-$me = $GLOBALS['warriorID'];
+$me = $GLOBALS['warriorName'];
 $battleField = NULL;
 $myWarrior = NULL;
 $otherWarriors = NULL;
 
 
 try {
-    $myWarrior = Warrior::getWarrior($GLOBALS['warriorID']);
+    $myWarrior = Warrior::getWarrior($GLOBALS['warriorName']);
 } catch (Exception $e) {
 }
 
 try {
-    $otherWarriors = Warrior::getWarriorsExceptOne($GLOBALS['warriorID']);
+    $otherWarriors = Warrior::getWarriorsExceptOne($GLOBALS['warriorName']);
 } catch (Exception $e) {
 }
 
@@ -78,13 +78,13 @@ if ( $params['do']=='iwin')
     // recreate the battle field
 
     try {
-        $myWarrior = warrior::getWarrior($GLOBALS['warriorID']);
+        $myWarrior = Warrior::getWarrior($GLOBALS['warriorName']);
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
     }
 
     try {
-        $otherWarriors = warrior::getWarriorsExceptOne($GLOBALS['warriorID']);
+        $otherWarriors = Warrior::getWarriorsExceptOne($GLOBALS['warriorName']);
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
     }
@@ -108,13 +108,13 @@ if ( $params['do']=='ilost')
 
     try {
         $myWarrior = NULL;
-        $myWarrior = warrior::getWarrior($GLOBALS['warriorID']);
+        $myWarrior = Warrior::getWarrior($GLOBALS['warriorName']);
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
     }
 
     try {
-        $otherWarriors = warrior::getWarriorsExceptOne($GLOBALS['warriorID']);
+        $otherWarriors = Warrior::getWarriorsExceptOne($GLOBALS['warriorName']);
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
     }
@@ -129,7 +129,7 @@ if ( $params['do']=='createMy')
 {
 
     try {
-        battleField::createMyWarrior();
+        BattleField::createMyWarrior();
 
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
@@ -137,13 +137,13 @@ if ( $params['do']=='createMy')
     // try recreate the battle field
 
     try {
-        $myWarrior = warrior::getWarrior($GLOBALS['warriorID']);
+        $myWarrior = Warrior::getWarrior($GLOBALS['warriorName']);
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
     }
 
     try {
-        $otherWarriors = warrior::getWarriorsExceptOne($GLOBALS['warriorID']);
+        $otherWarriors = Warrior::getWarriorsExceptOne($GLOBALS['warriorName']);
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
     }
@@ -160,7 +160,7 @@ if ( $params['do']=='createMy')
 if ( $params['do']=='createOther')
 {
     try {
-        battleField::createOtherWarrior();
+        BattleField::createOtherWarrior();
 
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
@@ -169,13 +169,13 @@ if ( $params['do']=='createOther')
     // try recreate the battle field
 
     try {
-        $myWarrior = warrior::getWarrior($GLOBALS['warriorID']);
+        $myWarrior = Warrior::getWarrior($GLOBALS['warriorName']);
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
     }
 
     try {
-        $otherWarriors = warrior::getWarriorsExceptOne($GLOBALS['warriorID']);
+        $otherWarriors = Warrior::getWarriorsExceptOne($GLOBALS['warriorName']);
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
     }
@@ -191,7 +191,7 @@ if ( $params['do']=='createOther')
 if ( $params['do']=='deleteAll')
 {
     try {
-        warrior::deleteAll();
+        Warrior::deleteAll();
     } catch (Exception $e) {
         array_push($errors, $e->getMessage());
     }

@@ -15,14 +15,13 @@ function checkAnswers()
     $doesWarriorConstructorSetMandatoryValues = new Exercise(ExerciseLibrary::EXERCISE_8_TITLE, ExerciseLibrary::EXERCISE_8_FUNCTION);
     $doWarriorInheritedClassesSetMandatoryValues = new Exercise(ExerciseLibrary::EXERCISE_9_TITLE, ExerciseLibrary::EXERCISE_9_FUNCTION);
     $weaponClassExists = new Exercise(ExerciseLibrary::EXERCISE_10_TITLE, ExerciseLibrary::EXERCISE_10_FUNCTION);
-    $hasWarriorClassSetWeaponMethod = new Exercise(ExerciseLibrary::EXERCISE_11_TITLE, ExerciseLibrary::EXERCISE_11_FUNCTION);
+    $hasWarriorClassWeaponAttribute = new Exercise(ExerciseLibrary::EXERCISE_11_TITLE, ExerciseLibrary::EXERCISE_11_FUNCTION);
     $hasWeaponClassMandatoryAttributes = new Exercise(ExerciseLibrary::EXERCISE_12_TITLE, ExerciseLibrary::EXERCISE_12_FUNCTION);
     $hasWeaponClassAConstructor = new Exercise(ExerciseLibrary::EXERCISE_13_TITLE, ExerciseLibrary::EXERCISE_13_FUNCTION);
-    $haveWarriorAndWeaponClassesSetImageUrlMethod = new Exercise(ExerciseLibrary::EXERCISE_14_TITLE, ExerciseLibrary::EXERCISE_14_FUNCTION);
-    $hasBattleFieldClassCreateMyWarriorMethod = new Exercise(ExerciseLibrary::EXERCISE_15_TITLE, ExerciseLibrary::EXERCISE_15_FUNCTION);
-    $doesBatteFieldClassInstanciateWarrior = new Exercise(ExerciseLibrary::EXERCISE_16_TITLE, ExerciseLibrary::EXERCISE_16_FUNCTION);
-    $hasBatteFieldClassCreateOtherWarriorMethod = new Exercise(ExerciseLibrary::EXERCISE_17_TITLE, ExerciseLibrary::EXERCISE_17_FUNCTION);
-    $doesCreateOtherWarriorMethodInstanciateOtherWarrior = new Exercise(ExerciseLibrary::EXERCISE_18_TITLE, ExerciseLibrary::EXERCISE_18_FUNCTION);
+    $hasBattleFieldClassCreateMyWarriorMethod = new Exercise(ExerciseLibrary::EXERCISE_14_TITLE, ExerciseLibrary::EXERCISE_14_FUNCTION);
+    $doesBatteFieldClassInstanciateWarrior = new Exercise(ExerciseLibrary::EXERCISE_15_TITLE, ExerciseLibrary::EXERCISE_15_FUNCTION);
+    $hasBatteFieldClassCreateOtherWarriorMethod = new Exercise(ExerciseLibrary::EXERCISE_16_TITLE, ExerciseLibrary::EXERCISE_16_FUNCTION);
+    $doesCreateOtherWarriorMethodInstanciateOtherWarrior = new Exercise(ExerciseLibrary::EXERCISE_17_TITLE, ExerciseLibrary::EXERCISE_17_FUNCTION);
 
     $exercises = [
         $changeWarriorID,
@@ -35,10 +34,9 @@ function checkAnswers()
         $doesWarriorConstructorSetMandatoryValues,
         $doWarriorInheritedClassesSetMandatoryValues,
         $weaponClassExists,
-        $hasWarriorClassSetWeaponMethod,
+        $hasWarriorClassWeaponAttribute,
         $hasWeaponClassMandatoryAttributes,
         $hasWeaponClassAConstructor,
-        $haveWarriorAndWeaponClassesSetImageUrlMethod,
         $hasBattleFieldClassCreateMyWarriorMethod,
         $doesBatteFieldClassInstanciateWarrior,
         $hasBatteFieldClassCreateOtherWarriorMethod,

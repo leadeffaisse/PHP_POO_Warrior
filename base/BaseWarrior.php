@@ -1,9 +1,11 @@
 <?php
 
+include_once '../students/Weapon.php';
+
 class BaseWarrior
 {
-    public $id = -1;
-    public $weapon = NULL;
+    public string $name = '';
+    public ?Weapon $weapon = null;
 
     static function getWarriorBase($w, $id)
     {
@@ -40,12 +42,12 @@ class BaseWarrior
         }
 
         // Check if warriors are presents
-        if (array_key_exists($this->id, $w)) {
+        if (array_key_exists($this->name, $w)) {
             throw new Exception('Le guerrier existe déjà, il doit mourrir avant de renaitre de ses cendres !!');
         }
 
         // Check if warrior is consistent
-        if ($this->id == -1) {
+        if (empty($this->name)) {
             throw new Exception('Le guerrier à un ID invalid !!');
         }
         if ($this->weapon == NULL) {
@@ -60,7 +62,7 @@ class BaseWarrior
         }
 
         // Append this or modify with key
-        $w[$this->id] = $this;
+        $w[$this->name] = $this;
 
         return $w;
     }
@@ -74,9 +76,9 @@ class BaseWarrior
         $w = unserialize(html_entity_decode($w));
 
         if ($this->life <= 0) {
-            unset($w[$this->id]);
+            unset($w[$this->name]);
         } else {
-            $w[$this->id] = $this;
+            $w[$this->name] = $this;
         }
 
         return $w;

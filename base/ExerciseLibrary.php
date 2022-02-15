@@ -1,27 +1,31 @@
 <?php
 
+require_once 'TestWarrior.php';
 require_once '../students/Warrior.php';
+include_once '../students/StartrekWarrior.php';
+include_once '../students/MarvelWarrior.php';
+include_once '../students/PokemonWarrior.php';
+include_once '../students/BattleField.php';
 
 abstract class ExerciseLibrary
 {
-    public const EXERCISE_1_TITLE = '1/ Modifiez la variable globale warriorID dans le fichier <u>students/Warrior.php</u>';
-    public const EXERCISE_2_TITLE = '2/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent être créées dans le fichier <u>students/Warrior.php</u>';
+    public const EXERCISE_1_TITLE = '1/ Modifiez la variable globale warriorName dans le fichier <u>students/Warrior.php</u>';
+    public const EXERCISE_2_TITLE = '2/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent être créées dans le dossier <u>students</u> (une classe par fichier)';
     public const EXERCISE_3_TITLE = '3/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent <u>hériter</u> de Warrior';
-    public const EXERCISE_4_TITLE = '4/ La <u>classe</u> Warrior doit avoir les <u>attributs (publics)</u> $id, $name, $speed, $life, $shield, $imageUrl et $weapon';
-    public const EXERCISE_5_TITLE = '5/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir respectivement les <u>attributs</u> $mentalPower, $superPower et $level';
-    public const EXERCISE_6_TITLE = '6/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir une méthode <u>power</u> qui retournent respectivement $mentalPower, $superPower et $level';
+    public const EXERCISE_4_TITLE = '4/ La <u>classe</u> Warrior doit avoir les <u>attributs (publics)</u> $name (string), $speed (int), $life (int), $shield (int) et $imageUrl (string)<br>⚠ En PHP 8, les attributs doivent être typés';
+    public const EXERCISE_5_TITLE = '5/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir respectivement les <u>attributs (publics)</u> $mentalPower, $superPower et $level';
+    public const EXERCISE_6_TITLE = '6/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir une méthode <u>getPower (publique)</u> qui retourne respectivement $mentalPower, $superPower et $level<br>⚠ En PHP 8, le type du retour de la méthode doit être indiqué';
     public const EXERCISE_7_TITLE = '7/ Les <u>classes</u> Warrior, StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir des <u>constructeurs</u>';
-    public const EXERCISE_8_TITLE = '8/ Le <u>constructeur</u> de Warrior doit prendre en paramètre un $id et initialiser l\'id, $speed = 30, $life = 100, $shield = 20';
+    public const EXERCISE_8_TITLE = '8/ Le <u>constructeur</u> de Warrior doit prendre en paramètre un $name et initialiser $name, $speed = 30, $life = 100, $shield = 20<br>⚠ En PHP 8, les paramètres des méthodes (constructeur compris) doivent être typés';
     public const EXERCISE_9_TITLE = '9/ Les <u>constructeurs</u> des sous-classes de Warrior doivent appeler le <u>constructeur</u> de Warrior et affecter $mentalPower = 8, $superPower = 100, $level = 1';
     public const EXERCISE_10_TITLE = '10/ Une <u>classe</u> Weapon doit être créée';
-    public const EXERCISE_11_TITLE = '11/ La <u>classe</u> Warrior doit avoir une <u>méthode</u> setWeapon() qui prend comme <u>argument</u> un Weapon. ATTENTION, c\'est un <u>setter</u>';
-    public const EXERCISE_12_TITLE = '12/ Weapon doit avoir les <u>attributs (publics)</u> $id, $strength et $imageUrl';
+    public const EXERCISE_11_TITLE = '11/ La <u>classe</u> Warrior doit avoir un <u>attribut (public)</u> $weapon (typé "Weapon ou null")';
+    public const EXERCISE_12_TITLE = '12/ Weapon doit avoir les <u>attributs (publics)</u> $id (int), $strength (int) et $imageUrl (string)';
     public const EXERCISE_13_TITLE = '13/ Weapon doit avoir un <u>constructeur</u> à 2 arguments $id et $strength qui initialise les attributs associés';
-    public const EXERCISE_14_TITLE = '14/ Warrior et Weapon doivent avoir une <u>méthode</u> setImageUrl($url) qui initialise l\'attribut $imageUrl';
-    public const EXERCISE_15_TITLE = '15/ La classe BattleField du fichier students/BattleField.php doit avoir une <u>méthode statique</u> createMyWarrior';
-    public const EXERCISE_16_TITLE = '16/ La méthode createMyWarrior doit <u>instancier</u> un guerrier, lui affecter une arme, une image et le sauvegarder (NB. la classe localWarrior contient une <u>méthode</u> saveNew). ATTENTION, l\'id du guerrier doit être la <u>variable globale</u> warriorID.<br/>Créez ensuite votre guerrier grâce au lien <u>Create My Warrior</u> présent en bas de cette page';
-    public const EXERCISE_17_TITLE = '17/ La <u>classe</u> BattleField doit avoir une <u>méthode statique</u> createOtherWarrior';
-    public const EXERCISE_18_TITLE = '18/ La <u>méthode statique</u> createOtherWarrior doit <u>instancier</u> un guerrier, lui affecter une arme, une image et le sauvegarder (NB. la <u>classe</u> localWarrior contient une <u>méthode</u> saveNew).<br>Créez ensuite les autres guerriers grâce au lien <u>Create Another</u> présent en bas de cette page';
+    public const EXERCISE_14_TITLE = '14/ La classe BattleField du fichier students/BattleField.php doit avoir une <u>méthode statique (publique)</u> createMyWarrior';
+    public const EXERCISE_15_TITLE = '15/ La méthode createMyWarrior doit <u>instancier</u> un guerrier, lui affecter une image, une arme (qui elle-même a une image) et le sauvegarder (NB. la classe localWarrior contient une <u>méthode</u> saveNew).<br>⚠ Le $name du guerrier doit être la <u>variable globale</u> warriorName.<br/><br/>Créez ensuite votre guerrier grâce au lien <u>Create My Warrior</u> présent en bas de cette page';
+    public const EXERCISE_16_TITLE = '16/ La <u>classe</u> BattleField doit avoir une <u>méthode statique (publique)</u> createOtherWarrior';
+    public const EXERCISE_17_TITLE = '17/ La <u>méthode statique</u> createOtherWarrior doit <u>instancier</u> un guerrier, lui affecter une arme, une image et le sauvegarder (NB. la <u>classe</u> localWarrior contient une <u>méthode</u> saveNew).<br>Créez ensuite les autres guerriers grâce au lien <u>Create Another</u> présent en bas de cette page';
 
     public const EXERCISE_1_FUNCTION = 'changeWarriorID';
     public const EXERCISE_2_FUNCTION = 'classesExist';
@@ -33,18 +37,17 @@ abstract class ExerciseLibrary
     public const EXERCISE_8_FUNCTION = 'doesWarriorConstructorSetMandatoryValues';
     public const EXERCISE_9_FUNCTION = 'doWarriorInheritedClassesSetMandatoryValues';
     public const EXERCISE_10_FUNCTION = 'weaponClassExists';
-    public const EXERCISE_11_FUNCTION = 'hasWarriorClassSetWeaponMethod';
+    public const EXERCISE_11_FUNCTION = 'hasWarriorClassWeaponAttribute';
     public const EXERCISE_12_FUNCTION = 'hasWeaponClassMandatoryAttributes';
     public const EXERCISE_13_FUNCTION = 'hasWeaponClassAConstructor';
-    public const EXERCISE_14_FUNCTION = 'haveWarriorAndWeaponClassesSetImageUrlMethod';
-    public const EXERCISE_15_FUNCTION = 'hasBattleFieldClassCreateMyWarriorMethod';
-    public const EXERCISE_16_FUNCTION = 'doesBatteFieldClassInstanciateWarrior';
-    public const EXERCISE_17_FUNCTION = 'hasBatteFieldClassCreateOtherWarriorMethod';
-    public const EXERCISE_18_FUNCTION = 'doesCreateOtherWarriorMethodInstanciateOtherWarrior';
+    public const EXERCISE_14_FUNCTION = 'hasBattleFieldClassCreateMyWarriorMethod';
+    public const EXERCISE_15_FUNCTION = 'doesBatteFieldClassInstanciateWarrior';
+    public const EXERCISE_16_FUNCTION = 'hasBatteFieldClassCreateOtherWarriorMethod';
+    public const EXERCISE_17_FUNCTION = 'doesCreateOtherWarriorMethodInstanciateOtherWarrior';
 
     public static function changeWarriorID(): bool
     {
-        return !empty($GLOBALS['warriorID']) && $GLOBALS['warriorID'] !== 'azertyuiop';
+        return !empty($GLOBALS['warriorName']) && $GLOBALS['warriorName'] !== 'azerty';
     }
 
     public static function classesExist(): bool
@@ -56,9 +59,9 @@ abstract class ExerciseLibrary
 
     public static function mustInheritWarriorClass()
     {
-        $startrekWarrior = new StartrekWarrior(1);
-        $marvelWarrior = new MarvelWarrior(2);
-        $pokemonWarrior = new PokemonWarrior(3);
+        $startrekWarrior = new StartrekWarrior('1');
+        $marvelWarrior = new MarvelWarrior('2');
+        $pokemonWarrior = new PokemonWarrior('3');
 
         return is_subclass_of($startrekWarrior, 'Warrior')
             && is_subclass_of($marvelWarrior, 'Warrior')
@@ -67,22 +70,20 @@ abstract class ExerciseLibrary
 
     public static function hasWarriorClassMandatoryAttributes()
     {
-        $warrior = new TestWarrior(4);
+        $warrior = new TestWarrior('4');
 
-        return property_exists($warrior, 'id')
-            && property_exists($warrior, 'name')
+        return property_exists($warrior, 'name')
             && property_exists($warrior, 'speed')
             && property_exists($warrior, 'life')
             && property_exists($warrior, 'shield')
-            && property_exists($warrior, 'imageUrl')
-            && (property_exists($warrior, 'weapon'));
+            && property_exists($warrior, 'imageUrl');
     }
 
     public static function haveWarriorInheritedClassesMandatoryProperties()
     {
-        $startrekWarrior = new StartrekWarrior(5);
-        $marvelWarrior = new MarvelWarrior(6);
-        $pokemonWarrior = new PokemonWarrior(7);
+        $startrekWarrior = new StartrekWarrior('5');
+        $marvelWarrior = new MarvelWarrior('6');
+        $pokemonWarrior = new PokemonWarrior('7');
 
         return property_exists($startrekWarrior, 'mentalPower')
             && !property_exists($startrekWarrior, 'superPower')
@@ -97,24 +98,24 @@ abstract class ExerciseLibrary
 
     public static function haveMethodPower()
     {
-        $startrekWarrior = new StartrekWarrior(9);
+        $startrekWarrior = new StartrekWarrior('9');
         $startrekWarrior->mentalPower = 12;
-        $marvelWarrior = new MarvelWarrior(10);
+        $marvelWarrior = new MarvelWarrior('10');
         $marvelWarrior->superPower = 12;
-        $pokemonWarrior = new PokemonWarrior(11);
+        $pokemonWarrior = new PokemonWarrior('11');
         $pokemonWarrior->level = 12;
 
-        return method_exists($startrekWarrior, 'power') && $startrekWarrior->power() == $startrekWarrior->mentalPower
-            && method_exists($marvelWarrior, 'power') && $marvelWarrior->power() == $marvelWarrior->superPower
-            && method_exists($pokemonWarrior, 'power') && $pokemonWarrior->power() == $pokemonWarrior->level;
+        return method_exists($startrekWarrior, 'getPower') && $startrekWarrior->getPower() === $startrekWarrior->mentalPower
+            && method_exists($marvelWarrior, 'getPower') && $marvelWarrior->getPower() === $marvelWarrior->superPower
+            && method_exists($pokemonWarrior, 'getPower') && $pokemonWarrior->getPower() === $pokemonWarrior->level;
     }
 
     public static function haveWarriorClassesConstructors()
     {
-        $warrior = new TestWarrior(8);
-        $startrekWarrior = new StartrekWarrior(9);
-        $marvelWarrior = new MarvelWarrior(10);
-        $pokemonWarrior = new PokemonWarrior(11);
+        $warrior = new TestWarrior('8');
+        $startrekWarrior = new StartrekWarrior('9');
+        $marvelWarrior = new MarvelWarrior('10');
+        $pokemonWarrior = new PokemonWarrior('11');
 
         return method_exists($warrior, '__construct')
             && method_exists($startrekWarrior, '__construct')
@@ -124,20 +125,23 @@ abstract class ExerciseLibrary
 
     public static function doesWarriorConstructorSetMandatoryValues()
     {
-        $warrior = new TestWarrior(12);
+        $warrior = new TestWarrior('12');
 
-        return $warrior->id === 12 && $warrior->speed === 30 && $warrior->shield === 20 && $warrior->life === 100;
+        return isset($warrior->name) && $warrior->name === '12'
+            && isset($warrior->speed) && $warrior->speed === 30
+            && isset($warrior->shield) && $warrior->shield === 20
+            && isset($warrior->life) && $warrior->life === 100;
     }
 
     public static function doWarriorInheritedClassesSetMandatoryValues()
     {
-        $startrekWarrior = new StartrekWarrior(10);
-        $marvelWarrior = new MarvelWarrior(11);
-        $pokemonWarrior = new PokemonWarrior(12);
+        $startrekWarrior = new StartrekWarrior('10');
+        $marvelWarrior = new MarvelWarrior('11');
+        $pokemonWarrior = new PokemonWarrior('12');
 
-        return $startrekWarrior->id === 10 && $startrekWarrior->mentalPower === 8 &&
-            $marvelWarrior->id === 11 && $marvelWarrior->superPower === 100 &&
-            $pokemonWarrior->id === 12 && $pokemonWarrior->level === 1 && $pokemonWarrior->speed === 30 && $pokemonWarrior->shield === 20 && $pokemonWarrior->life === 100;
+        return isset($startrekWarrior->name) && $startrekWarrior->name === '10' && $startrekWarrior->mentalPower === 8 &&
+            isset($marvelWarrior->name) && $marvelWarrior->name === '11' && $marvelWarrior->superPower === 100 &&
+            isset($pokemonWarrior->name) && $pokemonWarrior->name === '12' && $pokemonWarrior->level === 1 && $pokemonWarrior->speed === 30 && $pokemonWarrior->shield === 20 && $pokemonWarrior->life === 100;
     }
 
     public static function weaponClassExists()
@@ -145,24 +149,22 @@ abstract class ExerciseLibrary
         return class_exists('Weapon') && !is_subclass_of(new Weapon(1, 2), 'Warrior');
     }
 
-    public static function hasWarriorClassSetWeaponMethod()
+    public static function hasWarriorClassWeaponAttribute()
     {
         $warrior = new TestWarrior(10);
 
-        if (!method_exists($warrior, 'setWeapon')) {
+        if (!property_exists($warrior, 'weapon')) {
             return false;
         }
 
         try {
-            $warrior->setWeapon('toto');
-        } catch (TypeError $error) {
-            $weapon = new Weapon(5, 100);
-            $warrior->setWeapon($weapon);
+            $warrior->weapon = new Weapon(5, 100);
+            $warrior->weapon = null;
 
-            return $warrior->weapon === $weapon;
+            return true;
+        } catch (TypeError $exception) {
+            return false;
         }
-
-        return false;
     }
 
     public static function hasWeaponClassMandatoryAttributes()
@@ -178,22 +180,7 @@ abstract class ExerciseLibrary
     {
         $weapon = new Weapon(22, 100);
 
-        return method_exists($weapon, '__construct') && $weapon->id === 22 && $weapon->strength === 100;
-    }
-
-    public static function haveWarriorAndWeaponClassesSetImageUrlMethod()
-    {
-        $warrior = new TestWarrior(23);
-        $weapon = new Weapon(24, 100);
-
-        if (method_exists($warrior, 'setImageUrl') && method_exists($weapon, 'setImageUrl')) {
-            $warrior->setImageUrl('test');
-            $weapon->setImageUrl('test');
-
-            return $warrior->imageUrl === 'test' && $weapon->imageUrl === 'test';
-        }
-
-        return false;
+        return method_exists($weapon, '__construct') && $weapon->name === 22 && $weapon->strength === 100;
     }
 
     public static function hasBattleFieldClassCreateMyWarriorMethod()
@@ -209,15 +196,13 @@ abstract class ExerciseLibrary
 
     public static function doesBatteFieldClassInstanciateWarrior()
     {
-        $myWarrior = null;
-
         try {
-            $myWarrior = Warrior::getWarrior($GLOBALS['warriorID']);
+            $warrior = Warrior::getWarrior($GLOBALS['warriorName']);
         } catch (Exception $exception) {
             return false;
         }
 
-        return $myWarrior != null && $myWarrior->weapon !== null && $myWarrior->imageUrl !== '';
+        return $warrior !== null && $warrior->weapon !== null && $warrior->imageUrl !== '';
     }
 
     public static function hasBatteFieldClassCreateOtherWarriorMethod()
@@ -225,7 +210,7 @@ abstract class ExerciseLibrary
         try {
             $methodChecker = new ReflectionMethod('BattleField', 'createOtherWarrior');
 
-            return ($methodChecker->isStatic());
+            return $methodChecker->isStatic();
         } catch (Exception $exception) {
             return false;
         }
@@ -234,7 +219,7 @@ abstract class ExerciseLibrary
     public static function doesCreateOtherWarriorMethodInstanciateOtherWarrior()
     {
         try {
-            $otherWarriors = Warrior::getWarriorsExceptOne($GLOBALS['warriorID']);
+            $otherWarriors = Warrior::getWarriorsExceptOne($GLOBALS['warriorName']);
         } catch (Exception $exception) {
             return false;
         }

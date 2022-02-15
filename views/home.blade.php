@@ -42,8 +42,9 @@
     @endforeach
 
 
-    @if (getGoodAnswersCount($results) >= 4)
+    @if (getGoodAnswersCount($results) >= 14)
       <h1 class="mt-3">Ready to fight ? </h1>
+      <p>Click on your enemy to fight them!</p>
       <div class="flex mb-3">
         <a href="{{BattleField::getHost()}}?do=createMy&me={{$me}}" class="nes-btn is-primary mr-3">Create My Warrior</a>
         <a href="{{BattleField::getHost()}}?do=createOther&me={{$me}}" class="nes-btn is-primary  mr-3">Create Another</a>
@@ -55,7 +56,7 @@
 
     @endif
 
-    @if (getGoodAnswersCount($results) === 18)
+    @if (getGoodAnswersCount($results) === count($results))
       <h1  class="mt-3">Pour aller plus loin ... </h1>
       <ul class="nes-list is-disc">
         <li>Créez plus de  guerriers</li>

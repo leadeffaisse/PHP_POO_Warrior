@@ -18,7 +18,7 @@ class DistantWarrior extends BaseWarrior
     {
         $client = new GuzzleHttp\Client();
         $response = $client->request('POST', 'https://ownweb.fr/_CNA/', [
-            'form_params' => ['val'=>$w, 'who'=>$GLOBALS['warriorID']],
+            'form_params' => ['val'=>$w, 'who'=>$GLOBALS['warriorName']],
             'headers' => [
                 'content-type'     => 'application/x-www-form-urlencoded'
             ]]);
@@ -48,7 +48,7 @@ class DistantWarrior extends BaseWarrior
 
     public function saveNew()
     {
-        if (property_exists($this,'id') && $this->id!=$GLOBALS['warriorID'])
+        if (property_exists($this, 'name') && $this->name!=$GLOBALS['warriorName'])
             throw new Exception('Seul les autres étudiants peuvent créer des combatants !!!');
 
         // Get the actual cookie

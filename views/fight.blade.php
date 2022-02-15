@@ -34,7 +34,7 @@
               console.log('disabled = ', disabled);
               disabled = true;
               $(this).prop('disabled', true);
-              document.location.href={{BattleField::getHostJs()}}+'?do=iwin&p1={{$battleField->getMyWarrior()->id}}&p2={{$battleField->getOtherWarrior()->id}}';
+              document.location.href={{BattleField::getHostJs()}}+'?do=iwin&p1={{$battleField->getMyWarrior()->name}}&p2={{$battleField->getOtherWarrior()->name}}';
           }
       });
 
@@ -61,7 +61,7 @@
             disabled = true;
             $(this).prop('disabled', true);
             clearInterval(refreshIntervalId);
-            document.location.href={{BattleField::getHostJs()}}+'?do=ilost&p1={{$battleField->getMyWarrior()->id}}&p2={{$battleField->getOtherWarrior()->id}}';
+            document.location.href={{BattleField::getHostJs()}}+'?do=ilost&p1={{$battleField->getMyWarrior()->name}}&p2={{$battleField->getOtherWarrior()->name}}';
         }
 
       }

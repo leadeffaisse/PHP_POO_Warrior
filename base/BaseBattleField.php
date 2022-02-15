@@ -7,6 +7,12 @@ class BaseBattleField
     protected $otherWarrior;
     protected $vsId;
 
+    public function __construct($first, $second)
+    {
+        $this->myWarrior = $first;
+        $this->otherWarriors = $second;
+    }
+
     public function setVsId($v)
     {
         $this->vsId = $v;
@@ -28,15 +34,9 @@ class BaseBattleField
         return $this->otherWarriors;
     }
 
-    public function __construct($first, $second)
-    {
-        $this->myWarrior = $first;
-        $this->otherWarriors = $second;
-    }
-
     function warriorPower($w)
     {
-        return ($w->speed + $w->weapon->strength) * $w->power();
+        return ($w->speed + $w->weapon->strength) * $w->getPower();
     }
 
     function myPowerRatio()

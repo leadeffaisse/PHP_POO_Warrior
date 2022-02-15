@@ -31,7 +31,7 @@
     @foreach ($results as $result)
         <div class="nes-container is-rounded is-dark mb-3">
           <div class="flex items-center">
-            @if ($result->valid_ok)
+            @if ($result->isValid)
               <i class="nes-icon is-large star"></i>
             @else
               <i class="nes-icon is-large star is-empty"></i>
@@ -42,7 +42,7 @@
     @endforeach
 
 
-    @if (checkNbBadAnswers($results) < 4)
+    @if (getGoodAnswersCount($results) >= 4)
       <h1 class="mt-3">Ready to fight ? </h1>
       <div class="flex mb-3">
         <a href="{{BattleField::getHost()}}?do=createMy&me={{$me}}" class="nes-btn is-primary mr-3">Create My Warrior</a>
@@ -55,7 +55,7 @@
 
     @endif
 
-    @if (checkNbBadAnswers($results) == 0)
+    @if (getGoodAnswersCount($results) === 18)
       <h1  class="mt-3">Pour aller plus loin ... </h1>
       <ul class="nes-list is-disc">
         <li>Créez plus de  guerriers</li>

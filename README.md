@@ -8,13 +8,13 @@ Nous vous proposons de suivre la procédure suivante.
 
 Lancez un terminal Gitbash et copier/coller ligne par ligne les commandes suivantes.
 
-/!\ Contrôlez les messages d'erreurs /!\
+⚠️ Contrôlez les messages d'erreurs ⚠️
 
 ### On clone le dépôt Git.
 
-/!\ ici `[REPERTOIRE]` fait référence à votre répertoire projet, pensez à personnaliser cette valeur /!\
+⚠️ ici `[REPERTOIRE]` fait référence à votre répertoire projet, pensez à personnaliser cette valeur ⚠️
 
--> Conseil : placez `[REPERTOIRE]` dans le répertoire `htdocs` de Mamp /!\
+→ Conseil : placez `[REPERTOIRE]` dans le répertoire `htdocs` de MAMP (ou dans le dossier racine que vous avez configuré pour MAMP)
 
 ```
 mkdir [REPERTOIRE]
@@ -22,16 +22,16 @@ cd [REPERTOIRE]
 git clone https://github.com/le-campus-numerique/PHP_POO_Warrior.git
 ```
 
-### Avant d'aller plus loin :
+### Avant d'aller plus loin
 
-Assurez-vous que php est correctement configuré pour votre projet
+Assurez-vous que PHP est correctement configuré pour votre projet :
 
 ```
 php -i # doit Afficher le phpinfo() sans erreurs;
 ```
 
 
-### Installation des dépendances de composer
+### Installation des dépendances de Composer
 
 #### Vous avez déjà Composer installé
 
@@ -44,11 +44,7 @@ composer install
 
 #### Vous n'avez pas Composer installé
 
-```
-cd PHP_POO_Warrior
-php -r "copy('https://getcomposer.org/composer.phar', 'composer.phar');"
-php ./composer.phar install
-```
+[Installez-le](https://getcomposer.org/download/).
 
 
 ### Lancement du serveur 

@@ -19,7 +19,7 @@
             @foreach ($battleField->getOtherWarriors() as $warrior)
               <tr>
                 <td>
-                  <a href="{{BattleField::getHost()}}?do=fight&p1={{$battleField->getMyWarrior()->id}}&p2={{$warrior->id}}">
+                  <a href="{{BattleField::getHost()}}?do=fight&p1={{$battleField->getMyWarrior()->name}}&p2={{$warrior->name}}">
                     <img src="{{ $warrior->imageUrl }}" alt="{{ get_class ($warrior) }}" style="width:100px">
                   </a>
                   <img src="{{ $warrior->weapon->imageUrl }}" alt="Pan !" style="width:30px;">

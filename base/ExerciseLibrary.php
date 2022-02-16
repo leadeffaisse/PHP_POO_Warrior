@@ -166,7 +166,16 @@ abstract class ExerciseLibrary
     {
         $warrior = new TestWarrior('12');
 
-        return isset($warrior->name) && $warrior->name === '12'
+
+        $class = new ReflectionClass('TestWarrior');
+        $classParameters = $class->getMethod('__construct')->getParameters();
+        $hasValidParameter = count($classParameters) === 1 &&
+            $classParameters[0]->hasType() &&
+            $classParameters[0]->getType()->getName() === 'string';
+
+        return
+            $hasValidParameter
+            && isset($warrior->name) && $warrior->name === '12'
             && isset($warrior->speed) && $warrior->speed === 30
             && isset($warrior->shield) && $warrior->shield === 20
             && isset($warrior->life) && $warrior->life === 100;

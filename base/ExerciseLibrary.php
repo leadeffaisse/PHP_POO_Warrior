@@ -12,11 +12,11 @@ abstract class ExerciseLibrary
     public const EXERCISE_1_TITLE = '1/ Modifiez la variable globale warriorName dans le fichier <u>students/Warrior.php</u>';
     public const EXERCISE_2_TITLE = '2/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent être créées dans le dossier <u>students</u> (une classe par fichier)';
     public const EXERCISE_3_TITLE = '3/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent <u>hériter</u> de Warrior';
-    public const EXERCISE_4_TITLE = '4/ La <u>classe</u> Warrior doit avoir les <u>attributs (publics)</u> $name (string), $speed (int), $life (int), $shield (int) et $imageUrl (string)<br>⚠ En PHP 8, les attributs doivent être typés';
+    public const EXERCISE_4_TITLE = '4/ La <u>classe</u> Warrior doit avoir les <u>attributs (publics)</u> $name (type string), $speed (type int), $life (type int), $shield (type int) et $imageUrl (type string)';
     public const EXERCISE_5_TITLE = '5/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir respectivement les <u>attributs (publics)</u> $mentalPower, $superPower et $level';
-    public const EXERCISE_6_TITLE = '6/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir une méthode <u>getPower (publique)</u> qui retourne respectivement $mentalPower, $superPower et $level<br>⚠ En PHP 8, le type du retour de la méthode doit être indiqué';
+    public const EXERCISE_6_TITLE = '6/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir une méthode <u>getPower (publique)</u> qui retourne respectivement $mentalPower, $superPower et $level<br>⚠ Le type du retour de la méthode doit être indiqué';
     public const EXERCISE_7_TITLE = '7/ Les <u>classes</u> Warrior, StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir des <u>constructeurs</u>';
-    public const EXERCISE_8_TITLE = '8/ Le <u>constructeur</u> de Warrior doit prendre en paramètre un $name et initialiser $name, $speed = 30, $life = 100, $shield = 20<br>⚠ En PHP 8, les paramètres des méthodes (constructeur compris) doivent être typés';
+    public const EXERCISE_8_TITLE = '8/ Le <u>constructeur</u> de Warrior doit prendre en paramètre un $name et initialiser $name, $speed = 30, $life = 100, $shield = 20<br>⚠ Vous devez typer les paramètres des méthodes (constructeur compris)';
     public const EXERCISE_9_TITLE = '9/ Les <u>constructeurs</u> des sous-classes de Warrior doivent appeler le <u>constructeur</u> de Warrior et affecter $mentalPower = 8, $superPower = 100, $level = 1';
     public const EXERCISE_10_TITLE = '10/ Une <u>classe</u> Weapon doit être créée';
     public const EXERCISE_11_TITLE = '11/ La <u>classe</u> Warrior doit avoir un <u>attribut (public)</u> $weapon (typé "Weapon ou null")';

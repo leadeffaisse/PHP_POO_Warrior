@@ -2,11 +2,17 @@
 
 require_once 'TestWarrior.php';
 require_once '../students/Warrior.php';
-include_once '../students/StartrekWarrior.php';
-include_once '../students/MarvelWarrior.php';
-include_once '../students/PokemonWarrior.php';
-include_once '../students/BattleField.php';
 
+foreach ([
+             '../students/StartrekWarrior.php',
+             '../students/MarvelWarrior.php',
+             '../students/PokemonWarrior.php',
+             '../students/BattleField.php',
+    ] as $classFile) {
+    if(file_exists($classFile)) {
+        include_once $classFile;
+    }
+}
 abstract class ExerciseLibrary
 {
     public const EXERCISE_1_TITLE = '1/ Modifiez la variable globale warriorName dans le fichier <u>students/Warrior.php</u>';

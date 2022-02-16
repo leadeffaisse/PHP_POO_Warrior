@@ -68,15 +68,30 @@ abstract class ExerciseLibrary
             && is_subclass_of($pokemonWarrior, 'Warrior');
     }
 
-    public static function hasWarriorClassMandatoryAttributes()
+    public static function hasWarriorClassMandatoryAttributes(): bool
     {
         $warrior = new TestWarrior('4');
 
-        return property_exists($warrior, 'name')
-            && property_exists($warrior, 'speed')
-            && property_exists($warrior, 'life')
-            && property_exists($warrior, 'shield')
-            && property_exists($warrior, 'imageUrl');
+        $propertiesAndTypes = [
+            'name' => 'string',
+            'speed' => 'int',
+            'life' => 'int',
+            'shield' => 'int',
+            'imageUrl' => 'string',
+        ];
+
+        $isSuccess = true;
+
+        foreach ($propertiesAndTypes as $name => $type) {
+            $rp = new ReflectionProperty(Warrior::class, $name);
+            $hasValidType = $rp->hasType() && $rp->getType()->getName() === $type;
+
+            $isSuccess = $isSuccess &&
+                property_exists($warrior, $name) &&
+                $hasValidType;
+        }
+
+        return $isSuccess;
     }
 
     public static function haveWarriorInheritedClassesMandatoryProperties()

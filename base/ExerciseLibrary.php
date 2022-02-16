@@ -17,7 +17,7 @@ abstract class ExerciseLibrary
     public const EXERCISE_6_TITLE = '6/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir une méthode <u>getPower (publique)</u> qui retourne respectivement $mentalPower, $superPower et $level<br>⚠ Le type du retour de la méthode doit être indiqué';
     public const EXERCISE_7_TITLE = '7/ Les <u>classes</u> Warrior, StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir des <u>constructeurs</u>';
     public const EXERCISE_8_TITLE = '8/ Le <u>constructeur</u> de Warrior doit prendre en paramètre un $name et initialiser $name, $speed = 30, $life = 100, $shield = 20<br>⚠ Vous devez typer les paramètres des méthodes (constructeur compris)';
-    public const EXERCISE_9_TITLE = '9/ Les <u>constructeurs</u> des sous-classes de Warrior doivent appeler le <u>constructeur</u> de Warrior et affecter $mentalPower = 8, $superPower = 100, $level = 1';
+    public const EXERCISE_9_TITLE = '9/ Les <u>constructeurs</u> des sous-classes de Warrior doivent prendre en paramètre un $name, appeler le <u>constructeur</u> de Warrior avec la valeur de ce paramètre et affecter $mentalPower = 8, $superPower = 100, $level = 1';
     public const EXERCISE_10_TITLE = '10/ Une <u>classe</u> Weapon doit être créée';
     public const EXERCISE_11_TITLE = '11/ La <u>classe</u> Warrior doit avoir un <u>attribut (public)</u> $weapon (typé "Weapon ou null")';
     public const EXERCISE_12_TITLE = '12/ Weapon doit avoir les <u>attributs (publics)</u> $id (int), $strength (int) et $imageUrl (string)';
@@ -183,6 +183,24 @@ abstract class ExerciseLibrary
 
     public static function doWarriorInheritedClassesSetMandatoryValues()
     {
+        $hasValidConstructors = true;
+        foreach ([
+                     'StartrekWarrior',
+                     'MarvelWarrior',
+                     'PokemonWarrior',
+                 ] as $className) {
+            $class = new ReflectionClass($className);
+            $classParameters = $class->getMethod('__construct')->getParameters();
+            $hasValidParameter = count($classParameters) === 1 &&
+                $classParameters[0]->hasType() &&
+                $classParameters[0]->getType()->getName() === 'string';
+
+            $hasValidConstructors = $hasValidConstructors && $hasValidParameter;
+        }
+        if (!$hasValidConstructors) {
+            return false;
+        }
+
         $startrekWarrior = new StartrekWarrior('10');
         $marvelWarrior = new MarvelWarrior('11');
         $pokemonWarrior = new PokemonWarrior('12');

@@ -13,7 +13,7 @@ abstract class ExerciseLibrary
     public const EXERCISE_2_TITLE = '2/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent être créées dans le dossier <u>students</u> (une classe par fichier)';
     public const EXERCISE_3_TITLE = '3/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent <u>hériter</u> de Warrior';
     public const EXERCISE_4_TITLE = '4/ La <u>classe</u> Warrior doit avoir les <u>attributs (publics)</u> $name (type string), $speed (type int), $life (type int), $shield (type int) et $imageUrl (type string)';
-    public const EXERCISE_5_TITLE = '5/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir respectivement les <u>attributs (publics)</u> $mentalPower, $superPower et $level';
+    public const EXERCISE_5_TITLE = '5/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir respectivement les <u>attributs (publics de type int)</u> $mentalPower, $superPower et $level';
     public const EXERCISE_6_TITLE = '6/ Les <u>classes</u> StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir une méthode <u>getPower (publique)</u> qui retourne respectivement $mentalPower, $superPower et $level<br>⚠ Le type du retour de la méthode doit être indiqué';
     public const EXERCISE_7_TITLE = '7/ Les <u>classes</u> Warrior, StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir des <u>constructeurs</u>';
     public const EXERCISE_8_TITLE = '8/ Le <u>constructeur</u> de Warrior doit prendre en paramètre un $name et initialiser $name, $speed = 30, $life = 100, $shield = 20<br>⚠ Vous devez typer les paramètres des méthodes (constructeur compris)';
@@ -100,15 +100,39 @@ abstract class ExerciseLibrary
         $marvelWarrior = new MarvelWarrior('6');
         $pokemonWarrior = new PokemonWarrior('7');
 
+        try {
+            $rp = new ReflectionProperty(StartrekWarrior::class, 'mentalPower');
+            $startrekWarriorHasValidType = $rp->hasType() && $rp->getType()->getName() === 'int';
+        } catch (Exception) {
+            $startrekWarriorHasValidType = false;
+        }
+
+        try {
+            $rp = new ReflectionProperty(MarvelWarrior::class, 'superPower');
+            $marvelWarriorHasValidType = $rp->hasType() && $rp->getType()->getName() === 'int';
+        } catch (Exception) {
+            $marvelWarriorHasValidType = false;
+        }
+
+        try {
+            $rp = new ReflectionProperty(PokemonWarrior::class, 'level');
+            $pokemonWarriorHasValidType = $rp->hasType() && $rp->getType()->getName() === 'int';
+        } catch (Exception) {
+            $pokemonWarriorHasValidType = false;
+        }
+
         return property_exists($startrekWarrior, 'mentalPower')
             && !property_exists($startrekWarrior, 'superPower')
             && !property_exists($startrekWarrior, 'level')
+            && $startrekWarriorHasValidType
             && property_exists($marvelWarrior, 'superPower')
             && !property_exists($marvelWarrior, 'mentalPower')
             && !property_exists($marvelWarrior, 'level')
+            && $marvelWarriorHasValidType
             && property_exists($pokemonWarrior, 'level')
             && !property_exists($pokemonWarrior, 'mentalPower')
-            && !property_exists($pokemonWarrior, 'superPower');
+            && !property_exists($pokemonWarrior, 'superPower')
+            && $pokemonWarriorHasValidType;
     }
 
     public static function haveMethodPower()

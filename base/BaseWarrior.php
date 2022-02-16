@@ -7,7 +7,6 @@ if(file_exists($weaponClassFile)) {
 class BaseWarrior
 {
     public string $name = '';
-    public ?Weapon $weapon = null;
 
     static function getWarriorBase($w, $id)
     {

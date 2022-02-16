@@ -219,7 +219,14 @@ abstract class ExerciseLibrary
     {
         $warrior = new TestWarrior(10);
 
-        if (!property_exists($warrior, 'weapon')) {
+        $rc = new ReflectionClass(Warrior::class);
+        $hasWeapon = $rc->hasProperty('weapon')
+            && $rc->getProperty('weapon')
+            && $rc->getProperty('weapon')->getDeclaringClass()->getName() === Warrior::class
+            && $rc->getProperty('weapon')->hasType()
+            && $rc->getProperty('weapon')->getType()->getName() === Weapon::class;
+
+        if (!$hasWeapon) {
             return false;
         }
 

@@ -70,28 +70,13 @@ abstract class ExerciseLibrary
 
     public static function hasWarriorClassMandatoryAttributes(): bool
     {
-        $warrior = new TestWarrior('4');
-
-        $propertiesAndTypes = [
+        return self::checkProperties(Warrior::class, [
             'name' => 'string',
             'speed' => 'int',
             'life' => 'int',
             'shield' => 'int',
             'imageUrl' => 'string',
-        ];
-
-        $isSuccess = true;
-
-        foreach ($propertiesAndTypes as $name => $type) {
-            $rp = new ReflectionProperty(Warrior::class, $name);
-            $hasValidType = $rp->hasType() && $rp->getType()->getName() === $type;
-
-            $isSuccess = $isSuccess &&
-                property_exists($warrior, $name) &&
-                $hasValidType;
-        }
-
-        return $isSuccess;
+        ]);
     }
 
     public static function haveWarriorInheritedClassesMandatoryProperties()
@@ -242,11 +227,11 @@ abstract class ExerciseLibrary
 
     public static function hasWeaponClassMandatoryAttributes()
     {
-        $weapon = new Weapon(22, 100);
-
-        return property_exists($weapon, 'id')
-            && property_exists($weapon, 'strength')
-            && property_exists($weapon, 'imageUrl');
+        return self::checkProperties(Weapon::class, [
+            'id' => 'int',
+            'strength' => 'int',
+            'imageUrl' => 'string',
+        ]);
     }
 
     public static function hasWeaponClassAConstructor()
@@ -298,5 +283,21 @@ abstract class ExerciseLibrary
         }
 
         return sizeof($otherWarriors) !== 0;
+    }
+
+    protected static function checkProperties($class, array $propertiesAndTypes): bool
+    {
+        $isSuccess = true;
+
+        foreach ($propertiesAndTypes as $name => $type) {
+            $rp = new ReflectionProperty($class, $name);
+            $hasValidType = $rp->hasType() && $rp->getType()->getName() === $type;
+
+            $isSuccess = $isSuccess &&
+                property_exists($class, $name) &&
+                $hasValidType;
+        }
+
+        return $isSuccess;
     }
 }

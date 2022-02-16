@@ -238,7 +238,7 @@ abstract class ExerciseLibrary
     {
         $weapon = new Weapon(22, 100);
 
-        return method_exists($weapon, '__construct') && $weapon->name === 22 && $weapon->strength === 100;
+        return method_exists($weapon, '__construct') && $weapon->id === 22 && $weapon->strength === 100;
     }
 
     public static function hasBattleFieldClassCreateMyWarriorMethod()

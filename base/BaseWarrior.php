@@ -1,6 +1,8 @@
 <?php
-
-include_once '../students/Weapon.php';
+$weaponClassFile = '../students/Weapon.php';
+if(file_exists($weaponClassFile)) {
+    include_once $weaponClassFile;
+}
 
 class BaseWarrior
 {

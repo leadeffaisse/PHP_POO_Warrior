@@ -18,7 +18,7 @@ abstract class ExerciseLibrary
     public const EXERCISE_7_TITLE = '7/ Les <u>classes</u> Warrior, StartrekWarrior, MarvelWarrior et PokemonWarrior doivent avoir des <u>constructeurs</u>';
     public const EXERCISE_8_TITLE = '8/ Le <u>constructeur</u> de Warrior doit prendre en paramètre un $name et initialiser $name, $speed = 30, $life = 100, $shield = 20<br>⚠ Vous devez typer les paramètres des méthodes (constructeur compris)';
     public const EXERCISE_9_TITLE = '9/ Les <u>constructeurs</u> des sous-classes de Warrior doivent prendre en paramètre un $name, appeler le <u>constructeur</u> de Warrior avec la valeur de ce paramètre et affecter $mentalPower = 8, $superPower = 100, $level = 1';
-    public const EXERCISE_10_TITLE = '10/ Une <u>classe</u> Weapon doit être créée';
+    public const EXERCISE_10_TITLE = '10/ Une <u>classe</u> Weapon doit être créée dans le fichier <u>students/Weapon.php</u>';
     public const EXERCISE_11_TITLE = '11/ La <u>classe</u> Warrior doit avoir un <u>attribut (public)</u> $weapon (typé "Weapon ou null")';
     public const EXERCISE_12_TITLE = '12/ Weapon doit avoir les <u>attributs (publics)</u> $id (int), $strength (int) et $imageUrl (string)';
     public const EXERCISE_13_TITLE = '13/ Weapon doit avoir un <u>constructeur</u> à 2 arguments $id et $strength qui initialise les attributs associés';

@@ -296,12 +296,14 @@ abstract class ExerciseLibrary
         $isSuccess = true;
 
         foreach ($propertiesAndTypes as $name => $type) {
+            if (!property_exists($class, $name)) {
+                $isSuccess = false;
+                continue;
+            }
             $rp = new ReflectionProperty($class, $name);
             $hasValidType = $rp->hasType() && $rp->getType()->getName() === $type;
 
-            $isSuccess = $isSuccess &&
-                property_exists($class, $name) &&
-                $hasValidType;
+            $isSuccess = $isSuccess && $hasValidType;
         }
 
         return $isSuccess;

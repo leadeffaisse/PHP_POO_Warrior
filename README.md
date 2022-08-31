@@ -19,7 +19,7 @@ Lancez un terminal Gitbash et copier/coller ligne par ligne les commandes suivan
 ```
 mkdir [REPERTOIRE]
 cd [REPERTOIRE]
-git clone https://github.com/le-campus-numerique/PHP_POO_Warrior.git
+git clone https://github.com/le-campus-numerique/PHP_POO_Warrior.git .
 ```
 
 ### Avant d'aller plus loin

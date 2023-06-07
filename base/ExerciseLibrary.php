@@ -188,9 +188,11 @@ abstract class ExerciseLibrary
 
             $hasValidConstructors = $hasValidConstructors && $hasValidParameter;
         }
+      /* Mais pourquoi ! *****
         if (!$hasValidConstructors) {
             return false;
         }
+      */
 
         $startrekWarrior = new StartrekWarrior('10');
         $marvelWarrior = new MarvelWarrior('11');

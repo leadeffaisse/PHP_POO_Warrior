@@ -187,6 +187,10 @@ abstract class ExerciseLibrary
                 $classParameters[0]->getType()->getName() === 'string';
 
             $hasValidConstructors = $hasValidConstructors && $hasValidParameter;
+          
+            if (!$hasValidParameter) {
+                return false;
+            }
         }
       /* Mais pourquoi ! *****
         if (!$hasValidConstructors) {
